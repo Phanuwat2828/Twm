@@ -1,0 +1,18 @@
+docker run -d --name db_sql \
+  -e MYSQL_ROOT_PASSWORD=Kai_For(DB_SQL) \
+  -e MYSQL_DATABASE=Trade_db \
+  -e MYSQL_USER=MYSQL_USER \
+  -e MYSQL_PASSWORD=Kai_For(DB_SQL) \
+  -p 3306:3306 \
+  --restart always \
+  mysql
+
+
+
+docker run -d --name phpmyadmin \
+  -e PMA_HOST=db_sql \
+  -p 8081:80 \
+  --restart always \
+  --link db_sql:db \
+  phpmyadmin/phpmyadmin
+W
